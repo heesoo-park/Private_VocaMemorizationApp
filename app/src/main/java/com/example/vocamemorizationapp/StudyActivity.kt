@@ -26,7 +26,6 @@ class StudyActivity : AppCompatActivity() {
         viewPager = findViewById(R.id.view_pager)
         viewPager.adapter = StudyViewPagerAdapter(this)
         viewPager.isUserInputEnabled = false
-        viewPager.offscreenPageLimit = 1
     }
 
     fun moveToNextPage() {

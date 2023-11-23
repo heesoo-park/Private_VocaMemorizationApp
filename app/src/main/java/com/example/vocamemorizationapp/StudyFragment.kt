@@ -55,6 +55,11 @@ class StudyFragment(val curPage: Int): Fragment() {
         }
     }
 
+    override fun onDestroyView() {
+        Log.d("dkj", "Destroy: 111")
+        super.onDestroyView()
+    }
+
     companion object {
         private const val ARG_CURRENT_PAGE = "currentPage"
 
