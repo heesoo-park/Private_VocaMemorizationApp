@@ -9,7 +9,7 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 
-class StudyFragment(val curPage: Int): Fragment() {
+class StudyFragment: Fragment() {
 
     private var currentPage: Int = 0
     private lateinit var countText: TextView
@@ -35,11 +35,10 @@ class StudyFragment(val curPage: Int): Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        Log.d("dkj", "onViewCreated: $curPage")
-        countText = view.findViewById(R.id.count_text)
-        currentWord = view.findViewById(R.id.currentWord_text)
+        countText = view.findViewById(R.id.testCount_text)
+        currentWord = view.findViewById(R.id.testCurrentWord_text)
         currentMeaning = view.findViewById(R.id.currentMeaning_text)
-        nextBtn = view.findViewById(R.id.next_btn)
+        nextBtn = view.findViewById(R.id.testNext_btn)
 
         val wordList = (activity as? StudyActivity)?.studyWords?.wordList
         val meaningList = (activity as? StudyActivity)?.studyWords?.meaningList
@@ -51,22 +50,21 @@ class StudyFragment(val curPage: Int): Fragment() {
 
         nextBtn.setOnClickListener {
             (activity as? StudyActivity)?.moveToNextPage()
-
         }
     }
 
     override fun onDestroyView() {
-        Log.d("dkj", "Destroy: 111")
+        Log.d("dkj", "StudyFragment Destroy: 111")
         super.onDestroyView()
     }
 
     companion object {
         private const val ARG_CURRENT_PAGE = "currentPage"
 
-        fun newInstance(currentPage: Int): StudyFragment {
-            val fragment = StudyFragment(currentPage)
+        fun newInstance(position: Int): StudyFragment {
+            val fragment = StudyFragment()
             val args = Bundle()
-            args.putInt(ARG_CURRENT_PAGE, currentPage)
+            args.putInt(ARG_CURRENT_PAGE, position)
             fragment.arguments = args
             return fragment
         }

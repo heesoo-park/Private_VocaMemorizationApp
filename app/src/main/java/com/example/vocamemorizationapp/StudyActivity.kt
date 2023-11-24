@@ -23,14 +23,15 @@ class StudyActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_study)
 
-        viewPager = findViewById(R.id.view_pager)
+        viewPager = findViewById(R.id.studyView_pager)
         viewPager.adapter = StudyViewPagerAdapter(this)
         viewPager.isUserInputEnabled = false
+        viewPager.offscreenPageLimit = 1
     }
 
     fun moveToNextPage() {
         if (viewPager.currentItem == 9) {
-            val intent = Intent(this@StudyActivity, ResultActivity::class.java)
+            val intent = Intent(this@StudyActivity, TestActivity::class.java)
             intent.putStringArrayListExtra("wordResults", ArrayList(studyWords.wordList))
             intent.putStringArrayListExtra("meaningResults", ArrayList(studyWords.meaningList))
             startActivity(intent)
@@ -39,15 +40,12 @@ class StudyActivity : AppCompatActivity() {
             val nextPage = viewPager.currentItem + 1
             if (nextPage < (viewPager.adapter?.itemCount ?: 0)) {
                 viewPager.setCurrentItem(nextPage, true)
-
             }
         }
     }
 
-    fun getTenWords(wordsText: List<List<String>>): List<List<String>> {
-        val tenWords = wordsText.shuffled().take(10)
-
-        return tenWords
+    private fun getTenWords(wordsText: List<List<String>>): List<List<String>> {
+        return wordsText.shuffled().take(10)
     }
 }
 
