@@ -6,6 +6,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".TestFragment">
 
+    <!-- 현재 몇 번째 문제인지 표시 -->
     <TextView
         android:id="@+id/testCount_text"
         android:layout_width="wrap_content"
@@ -18,6 +19,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
 
+    <!-- 현재 단어 표시 -->
     <TextView
         android:id="@+id/testCurrentWord_text"
         android:layout_width="wrap_content"
@@ -30,7 +32,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/testCount_text" />
 
-
+    <!-- 현재 단어의 의미 적는 칸 표시 -->
     <EditText
         android:id="@+id/testCurrentMeaning_edit"
         android:layout_width="150dp"
@@ -43,6 +45,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/testCurrentWord_text" />
 
+    <!-- 다음 버튼 -->
     <Button
         android:id="@+id/testNext_btn"
         android:layout_width="wrap_content"
